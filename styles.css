@@ -146,6 +146,20 @@
     width: 16px;
     height: 16px;
   }
+
+  .thumb-icon {
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .thumb-active-blue {
+    color: blue;
+  }
+  
+  .thumb-active-red {
+    color: red;
+  }
+  
   
   @media (max-width: 640px) {
     .app-container {

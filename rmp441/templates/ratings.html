@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ratings Page</title>
+    <title>Ratings Page 2 {{ poliName }} </title>
 </head>
 <body>
-    <div id="reactEntry">
+    <div id="ratingsEntry">
         Loading...
     </div>
     <!-- Load JavaScript specific to this page -->
-    <script src="{{ url_for('static', filename='js/ratings.js') }}"></script>
+    <script>
+        window.poliName = "{{ poliName }}";
+    </script>
+    
+    <script src="{{ url_for('static', filename='js/bundle.js') }}"></script>
 </body>
 </html>

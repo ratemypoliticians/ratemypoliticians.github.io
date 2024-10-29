@@ -4,9 +4,11 @@ from flask import Flask, send_from_directory
 import os
 
 
-@rmp441.app.route('/ratings/')
-def show_ratings():
+@rmp441.app.route('/ratings/<name>')
+def show_ratings(name):
     """Display / route."""
-    context = {}
+    context = {"poliName" : name}
     print("SUPPP")
+    print(name)
+    
     return flask.render_template("ratings.html", **context)

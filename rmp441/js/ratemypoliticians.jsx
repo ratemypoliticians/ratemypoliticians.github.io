@@ -1,23 +1,30 @@
 import React, { useState } from 'react';
-import { Star } from 'lucide-react';
+import { ThumbsUp, ThumbsDown } from 'lucide-react';
 import '../../styles.css';
 
 const PoliticianReviewSection = ({ name }) => {
-  const [rating, setRating] = useState(0);
+  const [approval, setApproval] = useState(null); // null for no selection, true for approval, false for disapproval
   const [review, setReview] = useState('');
   const [reviews, setReviews] = useState([]);
-  const [hoveredStar, setHoveredStar] = useState(0);
+
+  const handleThumbsUpClick = () => {
+    setApproval(approval === true ? null : true); // Toggle thumbs up
+  };
+
+  const handleThumbsDownClick = () => {
+    setApproval(approval === false ? null : false); // Toggle thumbs down
+  };
 
   const handleSubmitReview = () => {
-    if (review.trim() && rating > 0) {
+    if (review.trim() && approval !== null) {
       const newReview = {
         text: review,
-        rating,
+        approval,
         date: new Date().toLocaleDateString()
       };
       setReviews([newReview, ...reviews]);
       setReview('');
-      setRating(0);
+      setApproval(null);
     }
   };
 
@@ -26,20 +33,18 @@ const PoliticianReviewSection = ({ name }) => {
       <h2 className="politician-name">{name}</h2>
       
       <div className="rating-section">
-        <h3 className="section-title">Rate {name}</h3>
-        <div className="star-container">
-          {[1, 2, 3, 4, 5].map((star) => (
-            <Star
-              key={star}
-              size={24}
-              className={`star ${
-                star <= (hoveredStar || rating) ? 'star-active' : ''
-              }`}
-              onMouseEnter={() => setHoveredStar(star)}
-              onMouseLeave={() => setHoveredStar(0)}
-              onClick={() => setRating(star)}
-            />
-          ))}
+        <h3 className="section-title">Do you approve of {name}?</h3>
+        <div className="thumbs-container">
+          <ThumbsUp
+            size={24}
+            className={`thumb-icon ${approval === true ? 'thumb-active-blue' : ''}`}
+            onClick={handleThumbsUpClick}
+          />
+          <ThumbsDown
+            size={24}
+            className={`thumb-icon ${approval === false ? 'thumb-active-red' : ''}`}
+            onClick={handleThumbsDownClick}
+          />
         </div>
         
         <div className="review-input-container">
@@ -53,8 +58,8 @@ const PoliticianReviewSection = ({ name }) => {
         
         <button 
           onClick={handleSubmitReview}
-          disabled={!review.trim() || rating === 0}
-          className={`submit-button ${(!review.trim() || rating === 0) ? 'disabled' : ''}`}
+          disabled={!review.trim() || approval === null}
+          className={`submit-button ${(!review.trim() || approval === null) ? 'disabled' : ''}`}
         >
           Submit Review
         </button>
@@ -69,10 +74,12 @@ const PoliticianReviewSection = ({ name }) => {
             {reviews.map((review, index) => (
               <div key={index} className="review-card">
                 <div className="review-header">
-                  <div className="star-container small">
-                    {[...Array(review.rating)].map((_, i) => (
-                      <Star key={i} size={16} className="star star-active" />
-                    ))}
+                  <div className="thumb-container small">
+                    {review.approval ? (
+                      <ThumbsUp size={16} className="thumb-icon thumb-active-blue" />
+                    ) : (
+                      <ThumbsDown size={16} className="thumb-icon thumb-active-red" />
+                    )}
                   </div>
                   <span className="review-date">{review.date}</span>
                 </div>
@@ -86,13 +93,13 @@ const PoliticianReviewSection = ({ name }) => {
   );
 };
 
-const RateMyPoliticians = () => {
+const RateMyPoliticians = ({name}) => {
   return (
     <div className="app-container">
       <h1 className="main-title">Rate My Politicians</h1>
       <div className="politicians-grid">
-        <PoliticianReviewSection name="Politician 1" />
-        <PoliticianReviewSection name="Politician 2" />
+        <PoliticianReviewSection name={name} />
+        {/* <PoliticianReviewSection name="Politician 2" /> */}
       </div>
     </div>
   );
