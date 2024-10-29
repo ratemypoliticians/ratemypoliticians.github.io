@@ -17,6 +17,7 @@ def show_index():
     context = {}
     return flask.render_template("index.html", **context)
 
+
 app = Flask(__name__)
 
 # Serve files from the 'uploads' folder

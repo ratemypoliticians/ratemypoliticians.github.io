@@ -27,7 +27,13 @@ module.exports = {
           presets: ["@babel/preset-env", "@babel/preset-react"],
           plugins: ["@babel/transform-runtime"],
         },
+        
       },
+        {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader']
+        },
+      
       {
         // Support for TypeScript in optional .ts or .tsx files
         test: /\.tsx?$/,
@@ -40,3 +46,4 @@ module.exports = {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
 };
+
