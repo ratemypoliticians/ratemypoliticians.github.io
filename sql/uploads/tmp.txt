@@ -1,0 +1,3 @@
+mkdir rmp441/js/
+touch rmp441/js/main.jsx
+touch rmp441/js/post.jsx
