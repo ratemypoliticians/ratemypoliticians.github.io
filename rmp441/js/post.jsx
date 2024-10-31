@@ -12,19 +12,17 @@ const Post = ({ url, name }) => {
 
   return (
     <div className="min-h-screen">
-      {/* Header Bar */}
- 
-
-      {/* Main Content */}
       <div className="app-container">
         <div className="politician-card">
-          <img 
-            src={imgUrl} 
-            alt="post_image" 
-            className="w-full h-64 object-cover rounded-lg mb-4"
-          />
+          <div className="circular-image-container">
+            <img
+              src={imgUrl}
+              alt="post_image"
+              className="circular-image"
+            />
+          </div>
           <div className="politician-name">
-            <a 
+            <a
               href={`/ratings/${owner}`}
               className="text-blue-600 hover:text-blue-800 transition-colors duration-200"
             >

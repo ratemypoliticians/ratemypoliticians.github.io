@@ -215,7 +215,7 @@ const PoliticianReviewSection = ({ name, location, title }) => {
 const RateMyPoliticians = ({name, location, title}) => {
   return (
     <div className="app-container">
-      <h1 className="main-title">Rate My Politicians</h1>
+      <h1 className="main-title">Rate Your Politician</h1>
       <div className="politicians-grid">
         <PoliticianReviewSection name={name} location={location} title={title} />
       </div>
