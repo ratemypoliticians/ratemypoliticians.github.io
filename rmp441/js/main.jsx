@@ -11,9 +11,9 @@ if (rootElement.id === "reactEntry") {
   console.log("suppers");
   root.render(
     <StrictMode>
-      <Post url="/uploads/DoBhY_h__400x400.jpg" name="Debbie Dingell" />
-      <Post url="/uploads/Q6YACEPYJZDMVJIASQDNLC25PI.jpg" name="Jason Morgan" />
-      <Post url="/uploads/Q6YACEPYJZDMVJIASQDNLC25PI.jpg" name="Travis Radin" />
+      <Post url="/uploads/debbie_imgjpg.jpg" name="Debbie Dingell" />
+      <Post url="/uploads/jason_morgan.jpg" name="Jason Morgan" />
+      <Post url="/uploads/travis_radina_img.jpg" name="Travis Radina" />
     </StrictMode>
   );
 } else if (rootElement.id === "ratingsEntry") {
@@ -21,9 +21,23 @@ if (rootElement.id === "reactEntry") {
   const poliName = window.poliName;
   console.log(poliName)
   // Render the "RateMyPoliticians" component in ratings.html
+  var loc = "loading . . ." 
+  var titl = "loading . . ." 
+  if (poliName === "Debbie Dingell"){
+    loc = " Michigan"
+    titl = " U.S Representative"
+  }
+  if (poliName === "Jason Morgan"){
+    loc =  " Ann Arbor"
+    titl = " State Representative"
+  }
+  if (poliName === "Travis Radina"){
+    loc = " Ann Arbor"
+    titl = " Concilman"
+  }
   root.render(
     <StrictMode>
-      <RateMyPoliticians name={poliName} />
+      <RateMyPoliticians name={poliName} location = {loc} title={titl} />
     </StrictMode>
   );
 }

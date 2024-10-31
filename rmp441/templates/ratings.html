@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ratings Page 2 {{ poliName }} </title>
+    <title>Ratings Page {{ poliName }} </title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+
 </head>
+<header>
+    <a href="/">Rate My Politicians</a>
+    <a href="/explore/">account</a> 
+    <a href="/users/{{ logname }}/">{{ logname }}</a>
+  </header>
 <body>
     <div id="ratingsEntry">
         Loading...

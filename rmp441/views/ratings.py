@@ -8,7 +8,5 @@ import os
 def show_ratings(name):
     """Display / route."""
     context = {"poliName" : name}
-    print("SUPPP")
-    print(name)
-    
+ 
     return flask.render_template("ratings.html", **context)
