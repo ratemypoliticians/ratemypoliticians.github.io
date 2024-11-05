@@ -287,7 +287,8 @@ header a:hover {
   max-width: 800px;
   margin: 32px auto;
   padding: 0 20px;
-  margin-left: 5px; /* Adjusted to move the search bar to the left */
+  margin-left: 1px; /* Adjusted to move the search bar to the left */
+  margin-right: 15px;
 }
 
 
