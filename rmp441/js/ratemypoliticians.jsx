@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from 'react';
-import { ThumbsUp, ThumbsDown, Trash2, MapPin, Briefcase, Share2, Flag } from 'lucide-react';
+import { ThumbsUp, ThumbsDown, Trash2, MapPin, Briefcase, Share2, Flag, Users } from 'lucide-react';
 import '../../styles.css';
 
-const PoliticianReviewSection = ({ name, location, title }) => {
+const PoliticianReviewSection = ({ name, location, title, party = " Democrat" }) => {
   const handleShare = (review) => {
     // Get current URL
     const currentUrl = window.location.href;
@@ -12,17 +12,14 @@ const PoliticianReviewSection = ({ name, location, title }) => {
       console.error('Failed to copy link:', err);
     });
   };
-
+  
   const handleReport = (review) => {
-
     alert('Report Submitted');
- 
     console.log('Review reported:', review);
   };
 
   const getInitialReviews = () => {
     if (name === 'Debbie Dingell') {
-    
       return [{
         text: "Debbie Dingell's approach often feels too moderate and cautious, especially on urgent progressive issues like Medicare for All and environmental reform. While she voices support for healthcare reform, her reluctance to fully back single-payer healthcare falls short of the progressive demand for a comprehensive, universal system that leaves no one behind. Additionally, her environmental policies, while appearing supportive on the surface, lack the boldness needed to combat the climate crisis effectively. Dingell's gradualist stance on transitioning the auto industry toward cleaner energy seems like a half-measure, favoring corporate interests over aggressive action. Her unwillingness to fully embrace a progressive agenda ultimately signals a hesitancy to challenge the status quo, which is disappointing for those seeking substantive change in these critical areas.",
         approval: false,
@@ -36,7 +33,6 @@ const PoliticianReviewSection = ({ name, location, title }) => {
       }];
     }
     else if (name == 'Travis Radina'){
- 
       return [{
         text: "Travis Radina has been an unwavering advocate for Ann Arbor and a champion for students and young professionals in our community. Representing Ward 3 on City Council, he's consistently prioritized affordable housing, proposing policies that expand housing access for residents, including University of Michigan students. Radina is also a staunch supporter of LGBTQ+ rights, working to protect our community from discrimination and spearheading initiatives that foster inclusivity. His environmental leadership is clear in his push for sustainable development and efforts to address climate change locally. Travis Radina's dedication to Ann Arbor's growth and well-being makes him an essential leader, and we need to keep him in office",
         approval: false,
@@ -45,7 +41,6 @@ const PoliticianReviewSection = ({ name, location, title }) => {
       }];
     }
     else if (name == 'Jason Morgan'){
- 
       return [{
         text: "Jason Morgan has been a proactive force in Michigan's 23rd State House District, championing legislation that addresses critical local issues. He has always been there for us college students at the University of Michigan and has been highly active in his advocacy for us. He introduced bills aimed at expanding affordable housing, including measures to increase tax credits for developers creating low-income housing units. Morgan is also a strong advocate for mental health, authoring legislation that secures additional funding for community mental health services and works to improve accessibility in schools. On environmental issues, he sponsored bills promoting clean energy and reducing PFAS contamination, ensuring cleaner water for all Michiganders. His hands-on approach and commitment to impactful legislation make him a vital representative for Ann Arbor and we need to keep him in office.",
         approval: true,
@@ -102,15 +97,23 @@ const PoliticianReviewSection = ({ name, location, title }) => {
       <div className="politician-info">
         <div className="politician-header">
           <div className="politician-name-title">
-            <h2 className="politician-name">{name}</h2>
+            <h2 className="politician-name">
+              <a href={`/ratings/${encodeURIComponent(name)}`} className="politician-name-link">
+                {name}
+              </a>
+            </h2>
             <div className="politician-details">
               <div className="detail-item">
-                <Briefcase size={16} className="detail-icon" />
+                <Briefcase size={20} className="detail-icon" />
                 <span>{title}</span>
               </div>
               <div className="detail-item">
-                <MapPin size={16} className="detail-icon" />
+                <MapPin size={20} className="detail-icon" />
                 <span>{location}</span>
+              </div>
+              <div className="detail-item">
+                <Users size={20} className="detail-icon" />
+                <span>{party}</span>
               </div>
             </div>
           </div>
@@ -124,7 +127,7 @@ const PoliticianReviewSection = ({ name, location, title }) => {
           </div>
         </div>
       </div>
-     
+      
       <div className="rating-section">
         <h3 className="section-title">Do you approve of {name}?</h3>
         <div className="thumbs-container">
@@ -139,7 +142,7 @@ const PoliticianReviewSection = ({ name, location, title }) => {
             onClick={handleThumbsDownClick}
           />
         </div>
-       
+        
         <div className="review-input-container">
           <textarea
             placeholder={`Write your review of ${name}...`}
@@ -148,7 +151,7 @@ const PoliticianReviewSection = ({ name, location, title }) => {
             className="review-textarea"
           />
         </div>
-       
+        
         <button
           onClick={handleSubmitReview}
           disabled={!review.trim() || approval === null}
@@ -212,12 +215,12 @@ const PoliticianReviewSection = ({ name, location, title }) => {
   );
 };
 
-const RateMyPoliticians = ({name, location, title}) => {
+const RateMyPoliticians = ({name, location, title, party}) => {
   return (
     <div className="app-container">
       <h1 className="main-title">Rate Your Politician</h1>
       <div className="politicians-grid">
-        <PoliticianReviewSection name={name} location={location} title={title} />
+        <PoliticianReviewSection name={name} location={location} title={title} party={party} />
       </div>
     </div>
   );

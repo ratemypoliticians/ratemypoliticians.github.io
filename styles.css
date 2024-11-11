@@ -33,6 +33,36 @@
   color: #333;
 }
 
+/* Updated styles for politician details */
+.politician-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.detail-icon {
+  width: 20px;
+  height: 20px;
+  color: #520190;
+}
+
+.detail-item span {
+  font-weight: 500;
+}
+
+/* Rest of the existing styles... */
 .section-title {
   font-size: 1.2rem;
   font-weight: 600;
@@ -160,20 +190,7 @@
   color: red;
 }
 
-
-@media (max-width: 640px) {
-  .app-container {
-    padding: 16px;
-  }
-
-  .main-title {
-    font-size: 2rem;
-  }
-
-  .politician-card {
-    padding: 16px;
-  }
-}
+/* Rest of the existing styles... */
 
 header {
   display: flex;
@@ -186,9 +203,9 @@ header {
 }
 
 header a {
-  font-size: 30px;  /* Increased font size */
-  text-decoration: none;  /* Removes underline */
-  color: black;  /* Sets text color to black */
+  font-size: 30px;
+  text-decoration: none;
+  color: black;
 }
 
 header a:first-child {
@@ -200,9 +217,8 @@ header a:nth-child(2) {
   margin-right: 30px;
 }
 
-/* Optional: Add hover effect */
 header a:hover {
-  opacity: 0.7;  /* Slight fade effect on hover */
+  opacity: 0.7;
 }
 
 .review-header {
@@ -235,7 +251,7 @@ header a:hover {
 
 .review-card {
   position: relative;
-  padding-bottom: 2rem; /* Make space for the action buttons */
+  padding-bottom: 2rem;
 }
 
 .review-actions {
@@ -282,15 +298,11 @@ header a:hover {
   object-fit: cover;
 }
 
-
 .search-container {
   max-width: 800px;
   margin: 32px auto;
   padding: 0 20px;
-  margin-left: 1px; /* Adjusted to move the search bar to the left */
-  margin-right: 15px;
 }
-
 
 .search-bar {
   width: 100%;
@@ -316,6 +328,10 @@ header a:hover {
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .search-result-item {
@@ -368,6 +384,9 @@ header a:hover {
 .page-layout {
   display: flex;
   min-height: 100vh;
+  justify-content: center;
+  gap: 32px;
+  padding: 20px;
 }
 
 .left-content {
@@ -377,121 +396,56 @@ header a:hover {
   overflow-y: auto;
 }
 
-.map-container {
-  flex: 1;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  min-width: 500px;
-  background: #f0f0f0;
-}
-
-.map {
-  width: 100%;
-  height: 100%;
-}
-
-.map-marker {
-  background: none;
-  border: none;
-}
-
-.map-marker-content {
-  background-color: #520190;
-  color: white;
-  padding: 8px 12px;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 500;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  white-space: nowrap;
-}
-
-/* Make sure the search results don't overflow */
-.search-container {
-  position: relative;
-  z-index: 1000;
-}
-
-@media (max-width: 1200px) {
-  .page-layout {
-    flex-direction: column;
-  }
-  
-  .left-content {
-    max-width: 100%;
-  }
-  
-  .map-container {
-    height: 500px;
-    min-width: 100%;
-  }
-}
-
-.page-layout {
-  display: flex;
-  min-height: 100vh;
-}
-
-.left-content {
-  flex: 1;
-  max-width: 900px;
-  padding: 20px;
-  overflow-y: auto;
-}
-
 .map-section {
   flex: 1;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 80px;
 }
 
 .map-title {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  font-size: 2.0rem; /* Adjusted to match general font size */
+  font-size: 2.0rem;
   color: #333;
   font-weight: 500;
-  margin-top: 32px; /* Align with the search bar vertically */
-  margin-left: 20px; /* Align with the search bar horizontally */
+  text-align: center;
+  margin: 32px 0 24px;
 }
 
-
 .map-container {
-  position: sticky;
-  top: 20px;
-  height: calc(100vh - 100px);
-  min-width: 500px;
-  background: #f0f0f0;
+  width: 1300px;
+  height: 600px;
+  background: #cdbebe;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  /* Horizontal centering only */
+  margin: 0 auto;
 }
 
 .map {
   width: 100%;
   height: 100%;
+}
+
+/* Popup specific styles */
+.leaflet-popup-content {
+  margin: 8px;
+  text-align: center;
+}
+
+.leaflet-popup-content img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+
+.leaflet-container {
   border-radius: 16px;
 }
-
-/* Fix for Leaflet map corners */
-.leaflet-container {
-  border-radius: 16px !important;
-}
-
-@media (max-width: 1200px) {
-  .page-layout {
-    flex-direction: column;
-  }
-  
-  .left-content {
-    max-width: 100%;
-  }
-  
-  .map-container {
-    height: 500px;
-    min-width: 100%;
-  }
-}
-
 
 .error-message {
   background-color: #ffe6e6;
@@ -535,4 +489,53 @@ header a:hover {
   outline: none;
   border-color: #3b82f6;
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+@media (max-width: 1200px) {
+  .page-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .left-content {
+    max-width: 100%;
+  }
+  
+  .map-section {
+    width: 75%;
+  }
+  
+  .map-container {
+    height: 400px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-container {
+    padding: 16px;
+  }
+
+  .main-title {
+    font-size: 2rem;
+  }
+
+  .politician-card {
+    padding: 16px;
+  }
+} 
+
+.politician-name-link {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.politician-name-link:hover {
+  color: #520190;
+  text-decoration: underline;
+}
+
+.approval-percentage  {
+  font-size: 1.25rem; /* Adjust the size as needed */
+  font-weight: bold;
 }

@@ -19,7 +19,7 @@ if (rootElement.id === "reactEntry") {
   var loc = "loading . . ."
   var titl = "loading . . ."
   if (poliName === "Debbie Dingell") {
-    loc = " Michigan"
+    loc = " Michigan, 6th District"
     titl = " U.S Representative"
   }
   if (poliName === "Jason Morgan") {
