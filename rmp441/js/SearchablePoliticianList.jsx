@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMapEvent } from 'react-leaflet';
 
 const SearchablePoliticianList = () => {
   const politicians = [
@@ -23,14 +23,17 @@ const SearchablePoliticianList = () => {
       title: "Councilman",
       location: "Ann Arbor",
       coordinates: [42.2829, -83.7504],
-    }
+    },
   ];
 
   const [searchTerm, setSearchTerm] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
 
   const filteredPoliticians = politicians.filter((politician) =>
-    politician.name.toLowerCase().includes(searchTerm.toLowerCase())
+    politician.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    politician.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    politician.title.toLowerCase().includes(searchTerm.toLowerCase())
+
   );
 
   return (
@@ -45,7 +48,7 @@ const SearchablePoliticianList = () => {
           <div className="search-container w-full">
             <input
               type="text"
-              placeholder="Search politicians..."
+              placeholder="Search politicians or locations..."
               value={searchTerm}
               onChange={(e) => {
                 setSearchTerm(e.target.value);
@@ -105,6 +108,10 @@ const SearchablePoliticianList = () => {
                 <Marker 
                   key={politician.name}
                   position={politician.coordinates}
+                  eventHandlers={{
+                    mouseover: (e) => e.target.openPopup(),
+                    mouseout: (e) => e.target.closePopup(),
+                  }}
                 >
                   <Popup>
                     <div className="map-marker-content">
