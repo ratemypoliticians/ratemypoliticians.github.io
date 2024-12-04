@@ -30,6 +30,11 @@ if (rootElement.id === "reactEntry") {
     loc = " Ann Arbor"
     titl = " Concilman"
   }
+  if (poliName === "Travis Radina") {
+    loc = " Ann Arbor"
+    titl = " Concilman"
+  }
+  
   
   root.render(
     <StrictMode>
