@@ -18,27 +18,43 @@ if (rootElement.id === "reactEntry") {
   
   var loc = "loading . . ."
   var titl = "loading . . ."
+  var dis = "N/A"
   if (poliName === "Debbie Dingell") {
-    loc = " Michigan, 6th District"
+    loc = " Michigan"
     titl = " U.S Representative"
+    dis = " 6th District "
   }
   if (poliName === "Jason Morgan") {
-    loc = " Ann Arbor"
+    loc = " Michigan"
     titl = " State Representative"
+    dis = " 23rd District "
   }
   if (poliName === "Travis Radina") {
     loc = " Ann Arbor"
-    titl = " Concilman"
+    titl = " Councilman"
+
   }
-  if (poliName === "Travis Radina") {
-    loc = " Ann Arbor"
-    titl = " Concilman"
-  }
-  
+
+  if (poliName === "Victoria Burton-Harris") {
+    loc = "Michigan"
+    titl = "Judge"
+    dis = "36th District Court"
+}
+
+if (poliName === "Ranjeev Puri") {
+    loc = "Michigan"
+    titl = "State Representative"
+    dis = "24th District"
+}
+if (poliName === "Sheldon Neeley") {
+  loc = "Flint"
+  titl = "Mayor"
+}
+ 
   
   root.render(
     <StrictMode>
-      <RateMyPoliticians name={poliName} location={loc} title={titl} />
+      <RateMyPoliticians name={poliName} location={loc} title={titl} district={dis}/>
     </StrictMode>
   );
 }
