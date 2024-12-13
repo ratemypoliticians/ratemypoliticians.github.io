@@ -31,3 +31,4 @@ tomlkit==0.13.2
 types-python-dateutil==2.9.0.20240906
 urllib3==2.2.3
 Werkzeug==3.0.4
+gunicorn==23.0.0
