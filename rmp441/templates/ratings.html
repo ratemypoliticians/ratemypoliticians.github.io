@@ -3,24 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ratings Page {{ poliName }} </title>
+    <title>Ratings Page</title>
     <link rel="stylesheet" href="/static/css/style.css" />
-
 </head>
-<header>
-    <a href="/">Rate My Politicians</a>
-    <a href="/account/">account</a> 
-    <a href="/users/{{ logname }}/">{{ logname }}</a>
-  </header>
 <body>
+    <header>
+        <a href="/">Rate My Politicians</a>
+        <a href="/account">Account</a>
+    </header>
     <div id="ratingsEntry">
         Loading...
     </div>
-    <!-- Load JavaScript specific to this page -->
-    <script>
-        window.poliName = "{{ poliName }}";
-    </script>
-    
-    <script src="{{ url_for('static', filename='js/bundle.js') }}"></script>
+    <script src="/static/js/bundle.js"></script>
 </body>
 </html>

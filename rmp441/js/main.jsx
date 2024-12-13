@@ -2,6 +2,9 @@ import React, { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import SearchablePoliticianList from "./SearchablePoliticianList";
 import RateMyPoliticians from './ratemypoliticians';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Account from './Account';
+import Login from './Login';
 
 const rootElement = document.getElementById("reactEntry") || document.getElementById("ratingsEntry");
 const root = createRoot(rootElement);
@@ -54,7 +57,18 @@ if (poliName === "Sheldon Neeley") {
   
   root.render(
     <StrictMode>
-      <RateMyPoliticians name={poliName} location={loc} title={titl} district={dis}/>
     </StrictMode>
   );
+
+  root.render(
+    <Router>
+      <Switch>
+        <Route exact path="/" component={SearchablePoliticianList} />
+        <Route path="/ratings/:name" component={RateMyPoliticians} name={poliName} location={loc} title={titl} district={dis} />
+        <Route path="/account" component={Account} />
+        <Route path="/login" component={Login} />
+      </Switch>
+    </Router>
+  );
+
 }

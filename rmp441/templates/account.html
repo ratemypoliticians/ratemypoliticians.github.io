@@ -1,27 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Account</title>
-  <link rel="stylesheet" href="/static/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
 </head>
-<header>
-    <a href="/">Rate My Politicians</a>
-    <a href="/account/">account</a> 
-    <a href="/users/{{ logname }}/">{{ logname }}</a>
-  </header>
-
 <body>
-
-<div class="app-container">
-
-   
-
-
-  <h1 class="main-title">Welcome, {{ username }}!</h1>
-  <a class = "main-title" href="{{ url_for('logout') }}">Logout</a>
-</div>
-
+    <header>
+        <a href="/">Rate My Politicians</a>
+        <a href="/account">Account</a>
+    </header>
+    <div id="reactEntry">
+        Loading...
+    </div>
+    <script src="/static/js/bundle.js"></script>
 </body>
 </html>

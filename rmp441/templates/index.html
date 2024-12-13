@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>RateMyPoli</title>
-        <link rel="stylesheet" href="/static/css/style.css" />
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate My Politicians</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
     <header>
         <a href="/">Rate My Politicians</a>
-        <a href="/account/">account</a> 
-      </header>
+        <a href="/account">Account</a>
+    </header>
     <div id="reactEntry">
         Loading ...
     </div>
-    <!-- Load JavaScript -->
-    <script src="{{ url_for('static', filename='js/bundle.js') }}"></script>
+    <script src="/static/js/bundle.js"></script>
+</body>
 </html>
