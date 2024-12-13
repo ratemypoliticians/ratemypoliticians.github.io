@@ -36,7 +36,13 @@ def logout():
 
 @rmp441.app.route('/login/', methods=['GET', 'POST'])
 def login():
+    session['username'] = 'Demo Account! Accounts coming soon!'
+
+    return redirect(url_for('show_index'))
+
     if request.method == 'POST':
+        return redirect(url_for('show_index'))
+
         username = request.form.get('username')
         if username:
             session['username'] = username
