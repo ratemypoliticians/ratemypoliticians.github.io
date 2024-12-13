@@ -5,6 +5,7 @@
   "main": "rmp441/js/main.jsx",
   "author": "awdeorio",
   "license": "MIT",
+  "homepage": "https://ratemypoliticians.github.io/",
   "repository": {},
   "devDependencies": {
     "@babel/core": ">=7.23.9",
